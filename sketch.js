@@ -29,8 +29,10 @@ function setup() {
   });
     
   colorMode(HSB);
+  console.log('New version running')
 
   setTimeout(() => {
+    console.log('Fireworks started')
     balloons = []
     balloonState = false;
     setupFireworks()
