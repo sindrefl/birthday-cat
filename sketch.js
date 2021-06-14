@@ -1,9 +1,10 @@
 let balloons = [];
 let balloonState = true;
+let song;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(250);
-  
   balloons = [...new Array(75).fill(0)].map( (d,i) => {
     
     if(i < 15){
@@ -24,20 +25,18 @@ function setup() {
     } else {
       return new Balloon("🎈")
     } 
-    
-  
   });
-    
+
+
+  song.play();
   colorMode(HSB);
-  console.log('New version running')
 
   setTimeout(() => {
-    console.log('Fireworks started')
     balloons = []
     balloonState = false;
     setupFireworks()
 
-  }, 5000)
+  }, 25000)
 }
 
 function draw() {
@@ -108,6 +107,7 @@ let font;
 
 function preload() {
   font = loadFont('fonts/JosefinSans-LightItalic.ttf');
+  song = loadSound('music/Happy_birthday.mp3')
 }
 
 
@@ -123,42 +123,46 @@ function setupFireworks() {
 
 function fireTheFireworks(){
   let currentWord = 0;
+  fireWord(currentWord);
   setInterval(() => {
-    if(currentWord === 0) {
-    [...new Array(5).fill(0)].map( (d,i) => {
-      setTimeout(() => {
-        addFirework((i+1)*100)  
-      }, i*100)
-    })
-    setTimeout(() => {
-        currentWord += 1
-    }, 1000)
-    } else if(currentWord === 1){
-      [...new Array(8).fill(0)].map( (d,i) => {
-      setTimeout(() => {
-          
-        addFirework((i+1)*100, i === 0)  
-      }, i*100)
-    })
-    setTimeout(() => {
-        currentWord += 1
-    }, 1000)
-    } else if(currentWord === 2) {
-      [...new Array(7).fill(0)].map( (d,i) => {
-      setTimeout(() => {
-        addFirework((i+1)*100)  
-      }, i*100)
-      })
-      setTimeout(() => {
-        currentWord += 1
-    }, 1000)
-    } else {
-      setTimeout(() => {
-        currentWord = 0
-      }, 3000)
-    }
- 
+   fireWord(currentWord);
   }, 5000)
+}
+
+function fireWord(currentWord){
+    if(currentWord === 0) {
+        [...new Array(5).fill(0)].map( (d,i) => {
+          setTimeout(() => {
+            addFirework((i+1)*100)  
+          }, i*100)
+        })
+        setTimeout(() => {
+            currentWord += 1
+        }, 1000)
+        } else if(currentWord === 1){
+          [...new Array(8).fill(0)].map( (d,i) => {
+          setTimeout(() => {
+              
+            addFirework((i+1)*100, i === 0)  
+          }, i*100)
+        })
+        setTimeout(() => {
+            currentWord += 1
+        }, 1000)
+        } else if(currentWord === 2) {
+          [...new Array(7).fill(0)].map( (d,i) => {
+          setTimeout(() => {
+            addFirework((i+1)*100)  
+          }, i*100)
+          })
+          setTimeout(() => {
+            currentWord += 1
+        }, 1000)
+        } else {
+          setTimeout(() => {
+            currentWord = 0
+          }, 3000)
+        }
 }
 
 function addFirework(ind, deb) {
