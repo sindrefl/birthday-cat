@@ -41,7 +41,7 @@ function setup() {
 }
 
 function draw() {
-  if((balloonState === true)) {
+  if(balloonState === true) {
     background(255, 100, 100);
   
     balloons.forEach(d => {
