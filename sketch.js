@@ -1,6 +1,12 @@
 let balloons = [];
 let balloonState = true;
+let startedSong = false;
 let song;
+
+function mousePressed() {
+  song.play();
+  startedSong = true;
+}
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -28,7 +34,6 @@ function setup() {
   });
 
 
-  song.play();
   colorMode(HSB);
 
   setTimeout(() => {
@@ -40,6 +45,13 @@ function setup() {
 }
 
 function draw() {
+  if(startedSong === false) {
+    textAlign(CENTER);
+    text('😺😺😺😺😺😺',  width*0.5,height*0.75) 
+    text('😺 Click me 😺', width*0.5,height*0.5)
+    text('😺😺😺😺😺😺',  width*0.5,height*0.25)
+    return
+  }
   if(balloonState === true) {
     background(255, 100, 100);
   
