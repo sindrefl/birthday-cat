@@ -135,7 +135,7 @@ function fireTheFireworks(){
     } else if(currentWord === 1){
       [...new Array(8).fill(0)].map( (d,i) => {
       setTimeout(() => {
-        addFirework((i+1)*100)  
+        addFirework((i+1)*100 + 300)  
       }, i*100)
     
     })
@@ -143,7 +143,7 @@ function fireTheFireworks(){
     } else if(currentWord === 2) {
       [...new Array(7).fill(0)].map( (d,i) => {
       setTimeout(() => {
-        addFirework((i+1)*100)  
+        addFirework((i+1)*100 + 400)  
       }, i*100)
       })
       currentWord += 1
@@ -154,7 +154,7 @@ function fireTheFireworks(){
     }
     
     
-  }, 2000)
+  }, 1000)
 }
 
 function addFirework(ind) {
