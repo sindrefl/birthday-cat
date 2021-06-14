@@ -152,10 +152,6 @@ function fireTheFireworks(){
   }, 2000)
 }
 
-function draw() {
-  
-}
-
 function addFirework(ind) {
   fireworks.push(new Firework(ind));
 }
