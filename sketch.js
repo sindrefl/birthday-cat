@@ -157,7 +157,7 @@ function fireTheFireworks(){
       }, 3000)
     }
  
-  }, 10000)
+  }, 5000)
 }
 
 function addFirework(ind) {
