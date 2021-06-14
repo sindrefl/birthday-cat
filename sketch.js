@@ -136,7 +136,8 @@ function fireTheFireworks(){
     } else if(currentWord === 1){
       [...new Array(8).fill(0)].map( (d,i) => {
       setTimeout(() => {
-        addFirework((i+1)*100 + 300)  
+          
+        addFirework((i+1)*100 + 300, i === 0)  
       }, i*100)
     })
     setTimeout(() => {
@@ -160,8 +161,8 @@ function fireTheFireworks(){
   }, 5000)
 }
 
-function addFirework(ind) {
-  fireworks.push(new Firework(ind));
+function addFirework(ind, deb) {
+  fireworks.push(new Firework(ind, deb));
 }
 
 function renderFireworks() {
