@@ -48,7 +48,11 @@ class Firework {
     let y = this.firework.pos.y;
     this.letters = font.textToPoints(letter[textCounter], x, y, 150);
     if(this.deb) {
+        console.log(letter)
+        console.log(letter[textCounter])
+        console.log(textCounter)
         console.log(font.textToPoints(letter[textCounter], x, y, 150))
+
     }
     for (let l of this.letters) {
       var p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false, true, l);
