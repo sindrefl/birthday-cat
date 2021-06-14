@@ -1,10 +1,6 @@
 class Firework {
-  constructor(ind, deb) {
+  constructor(ind) {
     this.hu = random(255);
-    this.deb = deb;
-    if(deb) {
-        console.log('debug')
-    }
     let x = ind;
     this.firework = new Particle(x, height, this.hu, true);
     this.exploded = false;
@@ -47,13 +43,6 @@ class Firework {
     let x = this.firework.pos.x;
     let y = this.firework.pos.y;
     this.letters = font.textToPoints(letter[textCounter], x, y, 150);
-    if(this.deb) {
-        console.log(letter)
-        console.log(letter[textCounter])
-        console.log(textCounter)
-        console.log(font.textToPoints(letter[textCounter], x, y, 150))
-
-    }
     for (let l of this.letters) {
       var p = new Particle(this.firework.pos.x, this.firework.pos.y, this.hu, false, true, l);
       this.particles.push(p);
