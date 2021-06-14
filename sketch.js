@@ -123,7 +123,7 @@ function setupFireworks() {
 
 function fireTheFireworks(){
   let currentWord = 0;
-  [...new Array(5)].forEach( (_) => {
+  setInterval(() => {
     if(currentWord === 0) {
     [...new Array(5).fill(0)].map( (d,i) => {
       setTimeout(() => {
@@ -155,8 +155,9 @@ function fireTheFireworks(){
       setTimeout(() => {
         currentWord = 0
       }, 3000)
-    } 
-  })
+    }
+ 
+  }, 10000)
 }
 
 function addFirework(ind) {
