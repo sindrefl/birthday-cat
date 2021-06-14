@@ -46,6 +46,7 @@ function setup() {
 
 function draw() {
   if(startedSong === false) {
+    textSize(80);  
     textAlign(CENTER);
     text('😺😺😺😺😺😺',  width*0.5,height*0.75) 
     text('😺 Click me 😺', width*0.5,height*0.5)
@@ -66,11 +67,7 @@ function draw() {
     fill(255);
     stroke(255);
     strokeWeight(4);
-    textSize(80);  
     
-    text('Happy', width*0.25,height*0.25)
-    text('Birthday', width*0.5,height*0.5)
-    text('Vanessa!!!', width*0.75,height*0.75)
   }
   else  {
     colorMode(RGB);
@@ -135,37 +132,37 @@ function setupFireworks() {
 
 function fireTheFireworks(){
   let currentWord = 0;
-  fireWord(currentWord);
+  const wordCallback = (w) => {currentWord = w} 
+  fireWord(currentWord, wordCallback);
   setInterval(() => {
-   fireWord(currentWord);
+   fireWord(currentWord, wordCallback);
   }, 3000)
 }
 
-function fireWord(currentWord){
+function fireWord(currentWord, updateWord){
     if(currentWord === 0) {
         [...new Array(5).fill(0)].map( (d,i) => {
           setTimeout(() => {
             addFirework((i+1)*100)  
           }, i*100)
         })
-            currentWord += 1
+            updateWord(currentWord += 1)
         } else if(currentWord === 1){
           [...new Array(8).fill(0)].map( (d,i) => {
-          setTimeout(() => {
-              
-            addFirework((i+1)*100, i === 0)  
+          setTimeout(() => {   
+            addFirework((i+1)*100)  
           }, i*100)
         })
-            currentWord += 1
+        updateWord(currentWord += 1)
         } else if(currentWord === 2) {
           [...new Array(7).fill(0)].map( (d,i) => {
           setTimeout(() => {
             addFirework((i+1)*100)  
           }, i*100)
           })
-            currentWord += 1
+          updateWord(currentWord += 1)
         } else {
-            currentWord = 0
+            updateWord(0)
         }
 }
 
