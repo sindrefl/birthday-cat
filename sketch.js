@@ -104,6 +104,11 @@ let fireworks = [];
 let gravity;
 let letter;
 let textCounter = 0;
+let font;
+
+function preload() {
+  font = loadFont('fonts/Arimo-MediumItalic.ttf');
+}
 
 
 function setupFireworks() {
