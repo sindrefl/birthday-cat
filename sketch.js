@@ -107,7 +107,7 @@ let textCounter = 0;
 let font;
 
 function preload() {
-  font = loadFont('fonts/PTSerif-Italic.ttf');
+  font = loadFont('fonts/JosefinSans-LightItalic.ttf');
 }
 
 
