@@ -1,4 +1,5 @@
 let balloons = [];
+let balloonState = true;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   background(250);
@@ -28,31 +29,42 @@ function setup() {
   });
     
   colorMode(HSB);
+
+  setTimeout(() => {
+    balloons = []
+    balloonState = false;
+    setupFireworks()
+
+  }, 5000)
 }
 
 function draw() {
-  background(255, 100, 100);
+  if((balloonState === true)) {
+    background(255, 100, 100);
   
+    balloons.forEach(d => {
+      d.update();
+      d.render();
+    })
+    
+    
+    textAlign(CENTER);
   
+    fill(255);
+    stroke(255);
+    strokeWeight(4);
+    textSize(80);  
+    
+    text('Happy', width*0.25,height*0.25)
+    text('Birthday', width*0.5,height*0.5)
+    text('Vanessa!!!', width*0.75,height*0.75)
+  }
+  else  {
+    colorMode(RGB);
+    background(0, 0, 0, 25);
+    renderFireworks();
+  }
   
-  
-  
-  balloons.forEach(d => {
-    d.update();
-    d.render();
-  })
-  
-  
-  textAlign(CENTER);
-
-  fill(255);
-  stroke(255);
-  strokeWeight(4);
-  textSize(80);  
-  
-  text('Happy', width*0.25,height*0.25)
-  text('Birthday', width*0.5,height*0.5)
-  text('Vanessa!!!', width*0.75,height*0.75)
 }
 
 class Balloon {
@@ -84,3 +96,74 @@ class Balloon {
   }
 }
 
+// Fireworks code:
+
+let fireworks = [];
+let gravity;
+let letter;
+let textCounter = 0;
+
+
+function setupFireworks() {
+  
+  letter = 'HAPPY BIRTHDAY VANESSA'.replace(/\s/g, '').split('');
+  textCounter = 0;
+  gravity = createVector(0, 0.2);
+  
+  fireTheFireworks();
+  
+}
+
+function fireTheFireworks(){
+  let currentWord = 0;
+  setInterval(() => {
+    if(currentWord === 0) {
+    [...new Array(5).fill(0)].map( (d,i) => {
+      setTimeout(() => {
+        addFirework((i+1)*100)  
+      }, i*100)
+    
+    })
+      currentWord += 1
+    } else if(currentWord === 1){
+      [...new Array(8).fill(0)].map( (d,i) => {
+      setTimeout(() => {
+        addFirework((i+1)*100)  
+      }, i*100)
+    
+    })
+      currentWord += 1
+    } else if(currentWord === 2) {
+      [...new Array(7).fill(0)].map( (d,i) => {
+      setTimeout(() => {
+        addFirework((i+1)*100)  
+      }, i*100)
+      })
+      currentWord += 1
+    } else {
+      setTimeout(() => {
+        currentWord = 0
+      }, 3000)
+    }
+    
+    
+  }, 2000)
+}
+
+function draw() {
+  
+}
+
+function addFirework(ind) {
+  fireworks.push(new Firework(ind));
+}
+
+function renderFireworks() {
+  for (var i = fireworks.length - 1; i >= 0; i--) {
+    fireworks[i].update();
+    fireworks[i].show();
+    if (fireworks[i].done()) {
+      fireworks.splice(i, 1);
+    }
+  }
+}
