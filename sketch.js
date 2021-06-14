@@ -107,7 +107,7 @@ let textCounter = 0;
 let font;
 
 function preload() {
-  font = loadFont('fonts/Arimo-SemiBoldItalic.ttf');
+  font = loadFont('fonts/Courgette-Regular.ttf');
 }
 
 
